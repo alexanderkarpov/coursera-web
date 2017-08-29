@@ -21,9 +21,9 @@ h1 {
     letter-spacing: 1px;
     border-left: 1px solid black;
     border-bottom: 1px solid black;
-    padding: 8px 2px 2px 2px;
+    padding: 7px 2px 2px 2px;
     width: 150px;
-    height: 35px;
+    height: 32px;
     text-align: center;
     float: right;
 }
@@ -41,7 +41,7 @@ h1 {
 }
 
 .menu-section-description {
-    padding: 8px 5px 0 5px;
+    padding: 6px 5px 0 5px;
     clear: right;
 }
 
