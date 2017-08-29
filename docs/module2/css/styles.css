@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #080808;
 }
 
 h1 {
@@ -8,12 +9,40 @@ h1 {
     text-align: center;
 }
 
-.menu-section{
+.menu-section {
     border: 1px solid black;
-    background-color: #777777;
+    background-color: #AAAAAA;
     width: 100%;
     height: 150px;
-    color: white;
+}
+
+.menu-section-title {
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 8px 2px 2px 2px;
+    width: 150px;
+    height: 35px;
+    text-align: center;
+    float: right;
+}
+
+.chicken {
+    background-color: lightpink;
+}
+
+.beef {
+    background-color: brown;
+}
+
+.sushi {
+    background-color: darkkhaki;
+}
+
+.menu-section-description {
+    padding: 8px 5px 0 5px;
+    clear: right;
 }
 
 /* Simple Responsive Framework. */
@@ -22,10 +51,10 @@ h1 {
 }
 
 /********** Large devices only **********/
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
     .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
         float: left;
-        padding: 10px 10px 10px 10px
+        padding: 10px 10px 10px 10px;
     }
 
     .col-lg-1 {
@@ -78,7 +107,7 @@ h1 {
 }
 
 /********** Medium devices only **********/
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 768px) and (max-width: 991px) {
     .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
         float: left;
         padding: 10px 10px 10px 10px
@@ -134,7 +163,7 @@ h1 {
 }
 
 /********** Small devices only **********/
-@media (max-width: 991px) {
+@media (max-width: 767px) {
     .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
         float: left;
         padding: 10px 10px 10px 10px
