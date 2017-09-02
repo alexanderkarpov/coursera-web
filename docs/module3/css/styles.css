@@ -68,6 +68,11 @@ body {
     font-size: 1.8em;
 }
 
+#nav-list  .active a {
+    color: #C7254E;
+    background-color: #f6b319;
+}
+
 #phone {
     margin-top: 5px;
 }
