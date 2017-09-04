@@ -1,0 +1,8 @@
+.navbar-brand a:hover, .navbar-brand a:focus {
+    color: #c7254e;
+}
+
+#logo {
+    clear: both;
+    color: #1b6d85;
+}
