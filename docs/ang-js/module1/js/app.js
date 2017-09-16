@@ -14,14 +14,14 @@
     }
 
     function checkItems(lunchMenuItems) {
-        if (lunchMenuItems) {
-            var items = lunchMenuItems.split(',').filter(function (w) {
-                return w.trim();
-            });
-            console.log("items: " + items + " (total " + items.length + ")")
-            return (items.length < 4 ? "Enjoy!" : "Too much!");
-        } else {
+        var items = lunchMenuItems.split(',').filter(function (w) {
+            return w.trim();
+        });
+        console.log("items: " + items + " (total " + items.length + ")");
+        if (items.length === 0) {
             return "Please enter data first";
+        } else {
+            return (items.length < 4 ? "Enjoy!" : "Too much!");
         }
     }
 })();
