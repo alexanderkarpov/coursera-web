@@ -21,9 +21,14 @@
 
         $scope.upCounter = function () {
             setTimeout(function () {
-                $scope.counter++;
-                console.log("Counter incremented");
-                $scope.$digest();
+                $scope.$apply(function () {
+                    $scope.counter++;
+                    console.log("Counter incremented");
+                });
+
+                // $scope.counter++;
+                // console.log("Counter incremented");
+                // $scope.$digest();
             }, 2000);
         };
 
