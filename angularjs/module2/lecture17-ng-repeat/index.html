@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="ShoppingListApp" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat</title>
+    <script src="../../lib/angular.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+<h1>hg-repeat</h1>
+<div ng-controller="ShoppingListController"></div>
+<div>test: {{test}}</div>
+
+<!--list1-->
+<h3>Shopping list:</h3>
+<ul>
+    <li ng-repeat="item in shoppingList1">{{ item }}</li>
+</ul>
+
+</body>
+</html>
