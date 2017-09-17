@@ -7,7 +7,7 @@
     <script src="app.js"></script>
 </head>
 <body>
-<h1>hg-repeat</h1>
+<h1>ng-repeat</h1>
 <div ng-controller="ShoppingListController">
     <div>test: {{test}}</div>
 
@@ -16,6 +16,23 @@
     <ul>
         <li ng-repeat="item in shoppingList1">{{ item }}</li>
     </ul>
+
+    <!--list2-->
+    <input type="text" ng-model="shoppingList2[5].quantity">
+    <ul>
+        <li ng-repeat="item in shoppingList2 | filter : search">
+            <b>{{$index}}</b> quantity: {{item.quantity}}; name: {{item.name}}
+        </li>
+    </ul>
+
+
+    <input type="text" ng-model="newItemName" placeholder="item name">
+    <input type="text" ng-model="newItemQuantity" placeholder="item quantity">
+    <button ng-click="addToList()">Add to list</button>
+
+    <br>
+    filter: <input type="text" ng-model="search">
+
 
 </div>
 
