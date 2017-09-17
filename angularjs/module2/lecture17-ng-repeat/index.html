@@ -8,14 +8,16 @@
 </head>
 <body>
 <h1>hg-repeat</h1>
-<div ng-controller="ShoppingListController"></div>
-<div>test: {{test}}</div>
+<div ng-controller="ShoppingListController">
+    <div>test: {{test}}</div>
 
-<!--list1-->
-<h3>Shopping list:</h3>
-<ul>
-    <li ng-repeat="item in shoppingList1">{{ item }}</li>
-</ul>
+    <!--list1-->
+    <h3>Shopping list:</h3>
+    <ul>
+        <li ng-repeat="item in shoppingList1">{{ item }}</li>
+    </ul>
+
+</div>
 
 </body>
 </html>
