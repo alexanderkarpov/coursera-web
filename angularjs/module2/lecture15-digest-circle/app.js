@@ -4,9 +4,9 @@
     angular.module('CounterApp', [])
         .controller('CounterController', CounterController);
 
-    CounterController.$inject = ['$scope'];
+    CounterController.$inject = ['$scope', '$timeout'];
 
-    function CounterController($scope) {
+    function CounterController($scope, $timeout) {
         $scope.onceCounter = 0;
         $scope.counter = 0;
         $scope.name = "Alexander";
@@ -20,17 +20,24 @@
         };
 
         $scope.upCounter = function () {
-            setTimeout(function () {
-                $scope.$apply(function () {
-                    $scope.counter++;
-                    console.log("Counter incremented");
-                });
-
-                // $scope.counter++;
-                // console.log("Counter incremented");
-                // $scope.$digest();
-            }, 2000);
+          $timeout(function () {
+              $scope.counter++;
+              console.log("Counter incremented");
+          }, 3000);
         };
+
+        // $scope.upCounter = function () {
+        //     setTimeout(function () {
+        //         $scope.$apply(function () {
+        //             $scope.counter++;
+        //             console.log("Counter incremented");
+        //         });
+        //
+        //         // $scope.counter++;
+        //         // console.log("Counter incremented");
+        //         // $scope.$digest();
+        //     }, 2000);
+        // };
 
         $scope.$watch(function () {
             console.log("Digest loop fired!")
