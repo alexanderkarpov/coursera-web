@@ -28,9 +28,11 @@
         showList.items = AlreadyBoughtListService.getItems();
     }
 
-    function ToBuyListService() {
+    ToBuyListService.$inject = ['AlreadyBoughtListService'];
+
+    function ToBuyListService(AlreadyBoughtListService) {
         var service = this;
-        var items = [
+        service.items = [
             {name: "cookies", quantity: "10 bags"},
             {name: "tomatoes", quantity: "1 kg"},
             {name: "potatoes", quantity: "5 kg"},
@@ -39,12 +41,13 @@
         ];
 
         service.getItems = function () {
-            return items;
+            return service.items;
         };
 
         service.removeItem = function (itemIndex) {
-            items.splice(itemIndex, 1);
-            //TODO: add to AlreadyBoughtListService
+            var item = service.items[itemIndex];
+            service.items.splice(itemIndex, 1);
+            AlreadyBoughtListService.addItem(item);
         };
 
 
@@ -52,11 +55,15 @@
 
     function AlreadyBoughtListService() {
         var service = this;
-        var items = [];
+        service.items = [];
 
         service.addItem = function (item) {
-            items.push(item);
-        }
+            service.items.push(item);
+        };
+
+        service.getItems = function () {
+            return service.items;
+        };
     }
 
 })();
