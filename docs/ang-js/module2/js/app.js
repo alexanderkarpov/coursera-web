@@ -9,26 +9,21 @@
         .service("AlreadyBoughtListService", AlreadyBoughtListService);
 
     ToBuyListController.$inject = ['ToBuyListService'];
+    AlreadyBoughtListController.$inject = ['AlreadyBoughtListService'];
+    ToBuyListService.$inject = ['AlreadyBoughtListService'];
 
     function ToBuyListController(ToBuyListService) {
         var showList = this;
-
         showList.items = ToBuyListService.getItems();
-
         showList.removeItem = function (itemIndex) {
             ToBuyListService.removeItem(itemIndex);
         };
     }
 
-    AlreadyBoughtListController.$inject = ['AlreadyBoughtListService'];
-
     function AlreadyBoughtListController(AlreadyBoughtListService) {
         var showList = this;
-
         showList.items = AlreadyBoughtListService.getItems();
     }
-
-    ToBuyListService.$inject = ['AlreadyBoughtListService'];
 
     function ToBuyListService(AlreadyBoughtListService) {
         var service = this;
@@ -49,8 +44,6 @@
             service.items.splice(itemIndex, 1);
             AlreadyBoughtListService.addItem(item);
         };
-
-
     }
 
     function AlreadyBoughtListService() {
