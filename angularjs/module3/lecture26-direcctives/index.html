@@ -18,7 +18,7 @@
       <button ng-click="list.addItem();">Add Item</button>
       <ol>
         <li ng-repeat="item in list.items">
-          {{ item.quantity }} of {{ item.name }}
+          <list-item-description></list-item-description>
           <button ng-click="list.removeItem($index);">Remove Item</button>
         </li>
       </ol>
@@ -33,7 +33,7 @@
       <button ng-click="list.addItem();">Add Item</button>
       <ol>
         <li ng-repeat="item in list.items">
-          {{ item.quantity }} of {{ item.name }}
+          <list-item-description></list-item-description>
           <button ng-click="list.removeItem($index);">Remove Item</button>
         </li>
       </ol>

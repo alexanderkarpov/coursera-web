@@ -4,7 +4,16 @@
     angular.module('ControllerAsApp', [])
         .controller('ShoppingListController1', ShoppingListController1)
         .controller('ShoppingListController2', ShoppingListController2)
-        .factory('ShoppingListFactory', ShoppingListFactory);
+        .factory('ShoppingListFactory', ShoppingListFactory)
+        .directive('listItemDescription', ListItemDescription);
+
+    function ListItemDescription() {
+        var ddo = {
+            template: '{{ item.quantity }} of {{ item.name }}'
+        };
+
+        return ddo;
+    }
 
 // LIST #1 - controller
     ShoppingListController1.$inject = ['ShoppingListFactory'];
