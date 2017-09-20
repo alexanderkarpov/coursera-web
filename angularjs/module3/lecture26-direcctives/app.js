@@ -5,11 +5,21 @@
         .controller('ShoppingListController1', ShoppingListController1)
         .controller('ShoppingListController2', ShoppingListController2)
         .factory('ShoppingListFactory', ShoppingListFactory)
-        .directive('listItemDescription', ListItemDescription);
+        .directive('listItemDescription', ListItemDescription)
+        .directive('listItem', ListItem);
 
     function ListItemDescription() {
         var ddo = {
-            template: '{{ item.quantity }} of {{ item.name }}'
+            template: '{{{ item.quantity }} of {{ item.name }}{ item.quantity }} of {{ item.name }}'
+        };
+
+        return ddo;
+    }
+
+    function ListItem() {
+        var  ddo = {
+            templateUrl: 'listItem.html'
+
         };
 
         return ddo;
