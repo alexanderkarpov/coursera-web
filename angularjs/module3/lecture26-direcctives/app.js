@@ -8,22 +8,23 @@
         .directive('listItemDescription', ListItemDescription)
         .directive('listItem', ListItem);
 
-    function ListItemDescription() {
-        var ddo = {
-            template: '{{{ item.quantity }} of {{ item.name }}{ item.quantity }} of {{ item.name }}'
-        };
-
-        return ddo;
-    }
-
     function ListItem() {
-        var  ddo = {
+        var ddo = {
             templateUrl: 'listItem.html'
 
         };
 
         return ddo;
     }
+
+    function ListItemDescription() {
+        var ddo = {
+            template: '{{ item.quantity }} of {{ item.name }}'
+        };
+
+        return ddo;
+    }
+
 
 // LIST #1 - controller
     ShoppingListController1.$inject = ['ShoppingListFactory'];
