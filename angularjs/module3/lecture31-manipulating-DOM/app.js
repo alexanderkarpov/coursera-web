@@ -18,12 +18,38 @@
             // controller: 'ShoppingListDirectiveController as list',
             controller: ShoppingListDirectiveController,
             controllerAs: 'list',
-            bindToController: true
+            bindToController: true,
+            link: ShoppingListDirectiveLink
         };
 
         return ddo;
     }
 
+    function ShoppingListDirectiveLink(scope, element, attr, controller) {
+        console.log("Link scope is: ", scope);
+        console.log("Controller instance is: ", controller);
+        console.log("Element is: ", element);
+
+        scope.$watch('list.cookiesInList()', function (newVal, oldVal) {
+           console.log("Old value", oldVal);
+           console.log("New value", newVal);
+
+           if(newVal === true) {
+               displayCookieWarning();
+           } else {
+               removeCookieWarning();
+           }
+         });
+
+    }
+
+    function displayCookieWarning() {
+
+    }
+
+    function removeCookieWarning() {
+
+    }
 
     function ShoppingListDirectiveController() {
         var list = this;
