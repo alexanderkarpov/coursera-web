@@ -31,27 +31,35 @@
         console.log("Element is: ", element);
 
         scope.$watch('list.cookiesInList()', function (newVal, oldVal) {
-           console.log("Old value", oldVal);
-           console.log("New value", newVal);
+            console.log("Old value", oldVal);
+            console.log("New value", newVal);
 
-           if(newVal === true) {
-               displayCookieWarning();
-           } else {
-               removeCookieWarning();
-           }
-         });
+            if (newVal === true) {
+                displayCookieWarning();
+            } else {
+                removeCookieWarning();
+            }
+        });
 
     }
 
     function displayCookieWarning() {
         //using angular jqLite
-        var warningElem = element.find("div");
-        warningElem.css('display', 'black');
+        // var warningElem = element.find("div");
+        // warningElem.css('display', 'black');
+
+        // var warningElem = element.find("div.error");
+        var warningElem = element.find("#error-message");
+        warningElem.slideDown(900);
     }
 
     function removeCookieWarning() {
-        var warningElem = element.find("div");
-        warningElem.css('display', 'none');
+        // var warningElem = element.find("div");
+        // warningElem.css('display', 'none');
+        // var warningElem = element.find("div.error");
+        var warningElem = element.find("#error-message");
+
+        warningElem.slideUp(900);
 
     }
 
