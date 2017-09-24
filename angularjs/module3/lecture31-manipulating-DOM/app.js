@@ -44,10 +44,14 @@
     }
 
     function displayCookieWarning() {
-
+        //using angular jqLite
+        var warningElem = element.find("div");
+        warningElem.css('display', 'black');
     }
 
     function removeCookieWarning() {
+        var warningElem = element.find("div");
+        warningElem.css('display', 'none');
 
     }
 
