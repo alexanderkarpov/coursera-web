@@ -12,8 +12,10 @@
     function NarrowItDownController(MenuSearchService) {
         var controller = this;
 
+        controller.searchTerm = "";
+
         controller.getMatchedMenuItems = function () {
-            var promise = MenuSearchService.getMatchedMenuItems();
+            var promise = MenuSearchService.getMatchedMenuItems(controller.searchTerm);
 
             promise.then(function (response) {
                 controller.found = response;
@@ -27,11 +29,18 @@
     function MenuSearchService($q, $http, ApiUrl) {
         var service = this;
 
-        service.getMatchedMenuItems = function () {
+        service.getMatchedMenuItems = function (searchItem) {
             var deferred = $q.defer();
-
+            var term = searchItem.toLowerCase();
             getMenuItemsPromise().then(function (response) {
-                var res = response.data.menu_items.map(function (item) {return item.name });
+                var res = response.data.menu_items
+                    .filter(function (item) {
+                        return item.description.toLowerCase().includes(term);
+                    })
+                    .map(function (item) {
+                        return {short_name: item.short_name, name: item.name, description: item.description};
+                    });
+
                 deferred.resolve(res);
             }).catch(function (error) {
                 deferred.reject(error);
