@@ -59,24 +59,28 @@
 
         service.getMatchedMenuItems = function (searchTerm) {
             var deferred = $q.defer();
-            var term = searchTerm.toLowerCase();
-            getMenuItemsPromise().then(function (response) {
-                var res = response.data.menu_items
-                    .filter(function (item) {
-                        return item.description.toLowerCase().includes(term);
-                    })
-                    .map(function (item) {
-                        return {
-                            short_name: item.short_name,
-                            name: item.name,
-                            description: item.description
-                        };
-                    });
+            if (!searchTerm) {
+                deferred.resolve([]);
+            } else {
+                var term = searchTerm.toLowerCase();
+                getMenuItemsPromise().then(function (response) {
+                    var res = response.data.menu_items
+                        .filter(function (item) {
+                            return item.description.toLowerCase().includes(term);
+                        })
+                        .map(function (item) {
+                            return {
+                                short_name: item.short_name,
+                                name: item.name,
+                                description: item.description
+                            };
+                        });
 
-                deferred.resolve(res);
-            }).catch(function (error) {
-                deferred.reject(error);
-            });
+                    deferred.resolve(res);
+                }).catch(function (error) {
+                    deferred.reject(error);
+                });
+            }
 
             return deferred.promise;
         };
