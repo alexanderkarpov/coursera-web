@@ -21,24 +21,9 @@
         </div>
     </div>
 
-
     <div class="col-lg-12">
-        <ul>
-            <li ng-repeat="item in list.found">
-                <button ng-click="list.removeItem($index);">Don't want this one!</button>
-                {{ item.short_name }} <b>{{ item.name }}</b> {{ item.description }}
-            </li>
-        </ul>
+        <found-items my-list="list"></found-items>
     </div>
-
-
-
-    <!-- found-items should be implemented as a component -->
-    <!--<div>-->
-    <!--<found-items found-items="list.found"-->
-    <!--title="{{list.title}}"-->
-    <!--on-remove="list.removeItem(index)"></found-items>-->
-    <!--</div>-->
 
 </div>
 

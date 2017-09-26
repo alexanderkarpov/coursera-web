@@ -15,13 +15,11 @@
         var ddo = {
             templateUrl: 'foundItems.html',
             scope: {
-                items: '<',
-                myTitle: '@title',
-                onRemove: '&'
-            },
-            controller: NarrowItDownController,
-            controllerAs: 'list',
-            bindToController: true
+                list: '=myList'
+            }
+            // controller: NarrowItDownController,
+            // controllerAs: 'list',
+            // bindToController: true
         };
 
         return ddo;
