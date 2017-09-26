@@ -16,7 +16,8 @@
             templateUrl: 'foundItems.html',
             scope: {
                 found: '<',
-                title: '@'
+                title: '@',
+                onRemove: '&'
             },
             controller: NarrowItDownController,
             controllerAs: 'list',
