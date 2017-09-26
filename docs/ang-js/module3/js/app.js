@@ -15,7 +15,7 @@
         var ddo = {
             templateUrl: 'foundItems.html',
             scope: {
-                list: '<myList'
+                list: '<'
             }
             // controller: NarrowItDownController,
             // controllerAs: 'list',

@@ -56,3 +56,8 @@ input[type="text"] {
         transform: rotate(360deg);
     }
 }
+
+.error {
+    color: red;
+    font-size: 1.5em;
+}
