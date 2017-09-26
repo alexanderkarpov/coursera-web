@@ -13,13 +13,7 @@
 
     function FoundItemsDirective() {
         var ddo = {
-            templateUrl: 'foundItems.html',
-            scope: {
-                list: '<'
-            }
-            // controller: NarrowItDownController,
-            // controllerAs: 'list',
-            // bindToController: true
+            templateUrl: 'foundItems.html'
         };
 
         return ddo;
@@ -28,6 +22,7 @@
     function NarrowItDownController(MenuSearchService) {
         var controller = this;
 
+        controller.test = "just test";
         controller.title = "found items";
         controller.searchTerm = "";
         controller.found = [];
