@@ -11,7 +11,7 @@
                 items: '<',
                 myTitle: '@title',
                 onRemove: '&'
-            },
+            }
 
 
         });
@@ -29,6 +29,10 @@
             }
 
             return false;
+        };
+
+        $ctrl.remove = function (myIndex) {
+            $ctrl.onRemove({index: myIndex});
         };
     }
 
