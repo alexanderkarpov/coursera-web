@@ -34,6 +34,14 @@
         $ctrl.remove = function (myIndex) {
             $ctrl.onRemove({index: myIndex});
         };
+
+        $ctrl.$onInit = function () {
+            console.log("We are in $onInit()");
+        };
+
+        $ctrl.$onChanges = function(changeObj) {
+          console.log(changeObj);
+        }
     }
 
 
