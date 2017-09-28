@@ -10,8 +10,6 @@
 </head>
 <body>
 <h1>Shopping List With Events:</h1>
-
-<!-- LIST #1 - unlimited items -->
 <div id="list" ng-controller='ShoppingListController as list'>
     <input type="text" ng-model="list.itemName" placeholder="item name">
     <input type="text" ng-model="list.itemQuantity" placeholder="quantity">
@@ -24,7 +22,7 @@
             on-remove="list.removeItem(index)"></shopping-list>
 
 </div>
-<loading-spinner></loading-spinner>
 
+<loading-spinner></loading-spinner>
 </body>
 </html>

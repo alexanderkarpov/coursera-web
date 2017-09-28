@@ -4,6 +4,7 @@
     angular.module('ShoppingListEventsApp', [])
         .controller('ShoppingListController', ShoppingListController)
         .factory('ShoppingListFactory', ShoppingListFactory)
+        .service('WeightLossFilterService', WeightLossFilterService)
         .component('shoppingList', {
             templateUrl: 'shoppingList.html',
             controller: ShoppingListComponentController,
@@ -18,22 +19,32 @@
             controller: SpinnerController
         });
 
-    SpinnerController.$inject = ['$rootScope'];
+
+    SpinnerController.$inject = ['$rootScope']
 
     function SpinnerController($rootScope) {
         var $ctrl = this;
 
-        $rootScope.$on('shoppingList:processing', function (event, data) {
-            console.log("Event", event);
-            console.log("Data", data);
+        var cancelListener = $rootScope.$on('shoppinglist:processing', function (event, data) {
+            console.log("Event: ", event);
+            console.log("Data: ", data);
+
+            if (data.on) {
+                $ctrl.showSpinner = true;
+            }
+            else {
+                $ctrl.showSpinner = false;
+            }
         });
 
-        $ctrl.showSpinner = data.on;
+        $ctrl.$onDestroy = function () {
+            cancelListener();
+        };
 
-    }
+    };
 
 
-    ShoppingListComponentController.$inject = ['$rootScope', '$element', '$q', 'WeightLossFilterService'];
+    ShoppingListComponentController.$inject = ['$rootScope', '$element', '$q', 'WeightLossFilterService']
 
     function ShoppingListComponentController($rootScope, $element, $q, WeightLossFilterService) {
         var $ctrl = this;
@@ -43,11 +54,12 @@
             totalItems = 0;
         };
 
+
         $ctrl.$doCheck = function () {
             if ($ctrl.items.length !== totalItems) {
                 totalItems = $ctrl.items.length;
 
-                $rootScope.$broadcast('shoppingList:processing', {on: true});
+                $rootScope.$broadcast('shoppinglist:processing', {on: true});
                 var promises = [];
                 for (var i = 0; i < $ctrl.items.length; i++) {
                     promises.push(WeightLossFilterService.checkName($ctrl.items[i].name));
@@ -65,33 +77,14 @@
                         warningElem.slideDown(900);
                     })
                     .finally(function () {
-                        $rootScope.$broadcast('shoppingList:processing', {on: false});
+                        $rootScope.$broadcast('shoppinglist:processing', {on: false});
                     });
-
-
             }
-        };
-
-        $ctrl.cookiesInList = function () {
-            for (var i = 0; i < $ctrl.items.length; i++) {
-                var name = $ctrl.items[i].name;
-                if (name.toLowerCase().indexOf("cookie") !== -1) {
-                    return true;
-                }
-            }
-
-            return false;
         };
 
         $ctrl.remove = function (myIndex) {
             $ctrl.onRemove({index: myIndex});
         };
-
-
-        $ctrl.$onChanges = function (changeObj) {
-            console.log(changeObj);
-        };
-
     }
 
 
@@ -111,16 +104,14 @@
         list.itemQuantity = "";
 
         list.addItem = function () {
-            console.log("add", list.itemName);
             shoppingList.addItem(list.itemName, list.itemQuantity);
             list.title = origTitle + " (" + list.items.length + " items )";
-        };
+        }
 
         list.removeItem = function (itemIndex) {
-            console.log("'this' is: ", this);
             this.lastRemoved = "Last item removed was " + this.items[itemIndex].name;
             shoppingList.removeItem(itemIndex);
-            list.title = origTitle + " (" + list.items.length + " items )";
+            this.title = origTitle + " (" + list.items.length + " items )";
         };
     }
 
@@ -162,6 +153,55 @@
         };
 
         return factory;
+    }
+
+
+    WeightLossFilterService.$inject = ['$q', '$timeout']
+
+    function WeightLossFilterService($q, $timeout) {
+        var service = this;
+
+        service.checkName = function (name) {
+            var deferred = $q.defer();
+
+            var result = {
+                message: ""
+            };
+
+            $timeout(function () {
+                // Check for cookies
+                if (name.toLowerCase().indexOf('cookie') === -1) {
+                    deferred.resolve(result)
+                }
+                else {
+                    result.message = "Stay away from cookies, Yaakov!";
+                    deferred.reject(result);
+                }
+            }, 3000);
+
+            return deferred.promise;
+        };
+
+
+        service.checkQuantity = function (quantity) {
+            var deferred = $q.defer();
+            var result = {
+                message: ""
+            };
+
+            $timeout(function () {
+                // Check for too many boxes
+                if (quantity < 6) {
+                    deferred.resolve(result);
+                }
+                else {
+                    result.message = "That's too much, Yaakov!";
+                    deferred.reject(result);
+                }
+            }, 1000);
+
+            return deferred.promise;
+        };
     }
 
 })();
