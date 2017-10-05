@@ -4,7 +4,7 @@
 angular.module('ShoppingList')
 .service('WeightLossFilterService', WeightLossFilterService);
 
-WeightLossFilterService.$inject = ['$q', '$timeout']
+WeightLossFilterService.$inject = ['$q', '$timeout'];
 function WeightLossFilterService($q, $timeout) {
   var service = this;
 
