@@ -6,12 +6,7 @@
     <title>Module 4</title>
 </head>
 <body>
-<h1>Welcome to our Restaurant</h1>
-
-<div class="tabs">
-    <a ui-sref="categories" ui-sref-active="activeTab">Categories</a>
-    <a ui-sref="items" ui-sref-active="activeTab">Items</a>
-</div>
+<n3>Welcome to our Restaurant</n3>
 
 <ui-view></ui-view>
 
@@ -21,7 +16,14 @@
 
 <!-- Modules -->
 <script src="src/menuapp.module.js"></script>
-<script src="src/data.module.js"></script>
+
+<!-- Routes -->
+<script src="src/routes.js"></script>
+
+<!-- 'MenuApp' module artifacts -->
+<script src="src/categories.component.js"></script>
+<script src="src/items.component.js"></script>
+<script src="src/menudata.service.js"></script>
 
 </body>
 </html>
