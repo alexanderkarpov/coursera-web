@@ -5,7 +5,7 @@
         .service('MenuDataService', MenuDataService);
 
 
-    MenuDataService.$inject = ['$q', '$http'];
+    MenuDataService.$inject = ['$q', '$http', '$stateParams'];
 
     function MenuDataService($q, $http) {
         var service = this;
@@ -24,21 +24,31 @@
             return deferred.promise;
         };
 
-        service.getItemsForCategory = function (categoryShortName) {
+        service.getItemsForCategory = function () {
+            var categorySortName = $stateParams.categorySortName;
+
             var deferred = $q.defer();
-            var promise = $http({
-                method: "GET",
-                url: "https://davids-restaurant.herokuapp.com/menu_items.json",
-                params: {
-                    category: categoryShortName
-                }
-            });
-            promise.then(function (response) {
-                deferred.resolve(response.data)
-            }).catch(function (error) {
-                console.log("Something went terribly wrong.", error);
-            });
+            if(categorySortName) {
+                var promise = $http({
+                    method: "GET",
+                    url: "https://davids-restaurant.herokuapp.com/menu_items.json",
+                    params: {
+                        category: categoryShortName
+                    }
+                });
+                promise.then(function (response) {
+                    deferred.resolve(response.data)
+                }).catch(function (error) {
+                    console.log("Something went terribly wrong.", error);
+                });
+
+            } else {
+                deferred.resolve([]);
+            }
+
             return deferred.promise;
+
+
         };
     }
 
