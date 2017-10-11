@@ -31,7 +31,12 @@
             .state('categoriesList.itemDetail', {
                 url: '/item-detail/{categoryShortName}',
                 templateUrl: 'src/menuapp/templates/items.template.html',
-                controller: "ItemDetailController as itemDetail"
+                controller: "ItemDetailController as itemDetail",
+                resolve: {
+                    categories: ['MenuDataService', function (MenuDataService) {
+                        return MenuDataService.getItemsForCategory();
+                    }]
+                }
             });
 
     }

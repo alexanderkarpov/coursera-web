@@ -7,7 +7,7 @@
 
     MenuDataService.$inject = ['$q', '$http', '$stateParams'];
 
-    function MenuDataService($q, $http) {
+    function MenuDataService($q, $http, $stateParams) {
         var service = this;
 
         service.getAllCategories = function () {
