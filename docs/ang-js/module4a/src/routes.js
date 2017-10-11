@@ -28,7 +28,7 @@
                 }
             })
 
-            .state('mainList.itemDetail', {
+            .state('categoriesList.itemDetail', {
                 url: '/item-detail/{itemId}',
                 templateUrl: 'src/menuapp/templates/item-detail.template.html',
                 controller: "ItemDetailController as itemDetail"
