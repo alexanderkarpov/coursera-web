@@ -27,7 +27,7 @@
                 controller: 'MainShoppingListController as mainList',
                 resolve: {
                     items: ['MenuDataService', function (MenuDataService) {
-                        return MenuDataService.getItems();
+                        return MenuDataService.getAllCategories();
                     }]
                 }
             })

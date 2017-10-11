@@ -5,7 +5,7 @@
         .service('MenuDataService', MenuDataService);
 
 
-    MenuDataService.$inject = ['$q']
+    MenuDataService.$inject = ['$q'];
 
     function MenuDataService($q) {
         var service = this;
@@ -30,15 +30,19 @@
             description: "Put these in the dough. No reason, really. Gotta store them somewhere!"
         });
 
-        // Simulates call to server
-        // Returns a promise, NOT items array directly
-        service.getItems = function () {
+        service.getAllCategories = function () {
             var deferred = $q.defer();
-
             deferred.resolve(items);
+            return deferred.promise;
+        };
 
+        service.getItemsForCategory = function (categoryShortName) {
+            var deferred = $q.defer();
+            deferred.resolve(categoryShortName);
             return deferred.promise;
         };
     }
+
+
 
 })();
