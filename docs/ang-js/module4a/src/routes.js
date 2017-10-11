@@ -30,7 +30,7 @@
 
             .state('categoriesList.items', {
                 url: '/items/{categoryShortName}',
-                templateUrl: 'src/menuapp/templates/items.template.html',
+                templateUrl: 'src/menuapp/templates/items-holder.template.html',
                 controller: "ItemsController as itemsList",
                 resolve: {
                     items: ['MenuDataService', function (MenuDataService) {

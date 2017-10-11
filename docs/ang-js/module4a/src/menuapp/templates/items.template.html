@@ -1,5 +1,12 @@
-<div>
-    <small>[item-detail.template.html]</small>
-</div>
-<div>{{ itemsList.short_name }}</div>
-<div>{{ itemsList.items }}</div>
+<!--<div>-->
+    <!--<small>[item-detail.template.html]</small>-->
+<!--</div>-->
+<!--<div>{{ itemsList.short_name }}</div>-->
+<!--<div>{{ itemsList.items }}</div>-->
+
+
+<ul>
+    <li ng-repeat="item in $ctrl.items">
+        {{ item }}
+    </li>
+</ul>
