@@ -20,7 +20,7 @@
             .state('mainList', {
                 url: '/main-list',
                 templateUrl: 'src/menuapp/templates/main-menuapp.template.html',
-                controller: 'CategoriesController as mainList',
+                controller: 'CategoriesController as categoriesList',
                 resolve: {
                     items: ['MenuDataService', function (MenuDataService) {
                         return MenuDataService.getAllCategories();
