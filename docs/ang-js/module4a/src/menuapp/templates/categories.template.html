@@ -3,8 +3,8 @@
 </div>
 <ul>
     <li ng-repeat="item in $ctrl.items.data" ui-sref="categoriesList.itemDetail({itemId: $index})">
-        [{{ item }}]
-        <!--[{{ item.id }} - {{ item.short_name }}]-->
+        <!--[{{ item }}]-->
+        [{{ item.id }} - {{ item.short_name }}]
         <!--id:{{ item.id }}; short name:; {{ item.short_name }} name:{{ item.name }};-->
         <!--special inst.:{{ item.special_instructions}}-->
     </li>
