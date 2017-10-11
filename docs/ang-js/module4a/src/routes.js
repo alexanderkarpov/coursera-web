@@ -28,8 +28,8 @@
                 }
             })
 
-            .state('categoriesList.itemDetail', {
-                url: '/item-detail/{categoryShortName}',
+            .state('categoriesList.items', {
+                url: '/items/{categoryShortName}',
                 templateUrl: 'src/menuapp/templates/items.template.html',
                 controller: "ItemsController as itemsList",
                 resolve: {
