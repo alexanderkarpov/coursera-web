@@ -30,7 +30,7 @@
 
             .state('categoriesList.itemDetail', {
                 url: '/item-detail/{itemId}',
-                templateUrl: 'src/menuapp/templates/item-detail.template.html',
+                templateUrl: 'src/menuapp/templates/items.template.html',
                 controller: "ItemDetailController as itemDetail"
             });
 
