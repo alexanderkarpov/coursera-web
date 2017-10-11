@@ -2,12 +2,12 @@
     'use strict';
 
     angular.module('MenuApp')
-        .controller('MainShoppingListController', MainShoppingListController);
+        .controller('CategoriesController', CategoriesController);
 
 
-    MainShoppingListController.$inject = ['MenuDataService', 'items'];
+    CategoriesController.$inject = ['MenuDataService', 'items'];
 
-    function MainShoppingListController(MenuDataService, items) {
+    function CategoriesController(MenuDataService, items) {
         var mainlist = this;
         mainlist.items = items;
     }
