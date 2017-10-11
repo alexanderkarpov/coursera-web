@@ -8,32 +8,35 @@
 
     function RoutesConfig($stateProvider, $urlRouterProvider) {
 
-        // Redirect to home page if no other URL matches
         $urlRouterProvider.otherwise('/');
 
-        // *** Set up UI states ***
         $stateProvider
 
             .state('home', {
                 url: '/',
-                templateUrl: 'src/templates/home.template.html'
+                templateUrl: 'src/menuapp/templates/home.template.html'
             })
 
             .state('categoriesList', {
                 url: '/categories-list',
-                templateUrl: 'src/templates/categories.template.html',
+                templateUrl: 'src/menuapp/templates/categories-holder.template.html',
                 controller: 'CategoriesController as categoriesList',
                 resolve: {
                     categories: ['MenuDataService', function (MenuDataService) {
-                        return [];//MenuDataService.getAllCategories();
+                        return MenuDataService.getAllCategories();
                     }]
                 }
             })
 
             .state('categoriesList.items', {
-                url: '/categories-list/{categoryShortName}',
-                templateUrl: 'src/templates/items.template.html'
-                // controller: "ItemDetailController as itemDetail"
+                url: '/items/{categoryShortName}',
+                templateUrl: 'src/menuapp/templates/items-holder.template.html',
+                controller: "ItemsController as itemsList",
+                resolve: {
+                    items: ['MenuDataService', function (MenuDataService) {
+                        return MenuDataService.getItemsForCategory();
+                    }]
+                }
             });
 
     }
