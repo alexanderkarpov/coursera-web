@@ -1,6 +1,8 @@
-<div><small>[categories.template.html]</small></div>
+<div>
+    <small>[categories.template.html]</small>
+</div>
 <ul>
-  <li ng-repeat="item in $ctrl.items" ui-sref="mainList.itemDetail({itemId: $index})">
-    {{ item.quantity }} of {{ item.name }}
-  </li>
+    <li ng-repeat="item in $ctrl.items" ui-sref="mainList.itemDetail({itemId: $index})">
+        {{ item.quantity }} of {{ item.name }}
+    </li>
 </ul>
