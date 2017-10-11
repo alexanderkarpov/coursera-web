@@ -17,8 +17,8 @@
                 templateUrl: 'src/menuapp/templates/home.template.html'
             })
 
-            .state('mainList', {
-                url: '/main-list',
+            .state('categoriesList', {
+                url: '/categories-list',
                 templateUrl: 'src/menuapp/templates/main-menuapp.template.html',
                 controller: 'CategoriesController as categoriesList',
                 resolve: {
