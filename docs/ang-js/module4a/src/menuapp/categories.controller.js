@@ -5,9 +5,9 @@
         .controller('MainShoppingListController', MainShoppingListController);
 
 
-    MainShoppingListController.$inject = ['ShoppingListService', 'items'];
+    MainShoppingListController.$inject = ['MenuDataService', 'items'];
 
-    function MainShoppingListController(ShoppingListService, items) {
+    function MainShoppingListController(MenuDataService, items) {
         var mainlist = this;
         mainlist.items = items;
     }

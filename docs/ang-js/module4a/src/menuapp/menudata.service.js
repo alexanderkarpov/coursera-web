@@ -2,12 +2,12 @@
     'use strict';
 
     angular.module('MenuApp')
-        .service('ShoppingListService', ShoppingListService);
+        .service('MenuDataService', MenuDataService);
 
 
-    ShoppingListService.$inject = ['$q', '$timeout']
+    MenuDataService.$inject = ['$q']
 
-    function ShoppingListService($q, $timeout) {
+    function MenuDataService($q) {
         var service = this;
 
         // List of shopping items
@@ -35,11 +35,7 @@
         service.getItems = function () {
             var deferred = $q.defer();
 
-            // Wait 2 seconds before returning
-            $timeout(function () {
-                // deferred.reject(items);
-                deferred.resolve(items);
-            }, 800);
+            deferred.resolve(items);
 
             return deferred.promise;
         };
