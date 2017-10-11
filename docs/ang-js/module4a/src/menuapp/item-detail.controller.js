@@ -5,11 +5,11 @@
         .controller('ItemDetailController', ItemDetailController);
 
 
-    ItemDetailController.$inject = ['$stateParams', 'items'];
+    ItemDetailController.$inject = ['$stateParams', 'categories'];
 
-    function ItemDetailController($stateParams, items) {
+    function ItemDetailController($stateParams, categories) {
         var itemDetail = this;
-        var item = items[$stateParams.itemId];
+        var item = categories[$stateParams.itemId];
         itemDetail.name = item.name;
         itemDetail.quantity = item.quantity;
         itemDetail.description = item.description;
