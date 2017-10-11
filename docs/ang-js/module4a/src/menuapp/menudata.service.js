@@ -25,19 +25,18 @@
         };
 
         service.getItemsForCategory = function () {
-            var categorySortName = $stateParams.categorySortName;
+            var categoryShortName = $stateParams.categoryShortName;
 
             var deferred = $q.defer();
-            if(categorySortName) {
+            if (categoryShortName) {
                 var promise = $http({
                     method: "GET",
-                    url: "https://davids-restaurant.herokuapp.com/menu_items.json",
-                    params: {
-                        category: categoryShortName
-                    }
+                    // url: "https://davids-restaurant.herokuapp.com/categories.json"
+                    url: "https://davids-restaurant.herokuapp.com/menu_items.json?category=" + categoryShortName
                 });
                 promise.then(function (response) {
-                    deferred.resolve(response.data)
+                    console.log("items", response.data.menu_items);
+                    deferred.resolve(response.data.menu_items)
                 }).catch(function (error) {
                     console.log("Something went terribly wrong.", error);
                 });
