@@ -22,10 +22,10 @@
             .state('categoriesList', {
                 url: '/categories-list',
                 templateUrl: 'src/templates/categories.template.html',
-                controller: 'MainShoppingListController as mainList',
+                controller: 'CategoriesController as categoriesList',
                 resolve: {
-                    items: ['MenuDataService', function (MenuDataService) {
-                        return MenuDataService.getAllCategories();
+                    categories: ['MenuDataService', function (MenuDataService) {
+                        return [];//MenuDataService.getAllCategories();
                     }]
                 }
             })
