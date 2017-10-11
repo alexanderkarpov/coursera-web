@@ -24,8 +24,8 @@
             return deferred.promise;
         };
 
-        service.getItemsForCategory = function () {
-            var categoryShortName = $stateParams.categoryShortName;
+        service.getItemsForCategory = function (categoryShortName) {
+            // var categoryShortName = $stateParams.categoryShortName;
 
             var deferred = $q.defer();
             if (categoryShortName) {
