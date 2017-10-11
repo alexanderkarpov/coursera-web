@@ -5,9 +5,9 @@
         .service('MenuDataService', MenuDataService);
 
 
-    MenuDataService.$inject = ['$q', '$http', '$stateParams'];
+    MenuDataService.$inject = ['$q', '$http'];
 
-    function MenuDataService($q, $http, $stateParams) {
+    function MenuDataService($q, $http) {
         var service = this;
 
         service.getAllCategories = function () {
@@ -25,7 +25,6 @@
         };
 
         service.getItemsForCategory = function (categoryShortName) {
-            // var categoryShortName = $stateParams.categoryShortName;
 
             var deferred = $q.defer();
             if (categoryShortName) {
