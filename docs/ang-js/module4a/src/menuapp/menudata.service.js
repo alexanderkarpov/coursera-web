@@ -14,7 +14,7 @@
             var deferred = $q.defer();
             var promise = $http({
                 method: "GET",
-                url: ("https://davids-restaurant.herokuapp.com/categories.json")
+                url: "https://davids-restaurant.herokuapp.com/categories.json"
             });
             promise.then(function (response) {
                 deferred.resolve(response.data)
@@ -26,7 +26,18 @@
 
         service.getItemsForCategory = function (categoryShortName) {
             var deferred = $q.defer();
-            deferred.resolve(categoryShortName);
+            var promise = $http({
+                method: "GET",
+                url: "https://davids-restaurant.herokuapp.com/menu_items.json",
+                params: {
+                    category: categoryShortName
+                }
+            });
+            promise.then(function (response) {
+                deferred.resolve(response.data)
+            }).catch(function (error) {
+                console.log("Something went terribly wrong.", error);
+            });
             return deferred.promise;
         };
     }
