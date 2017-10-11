@@ -8,8 +8,8 @@
     CategoriesController.$inject = ['MenuDataService', 'items'];
 
     function CategoriesController(MenuDataService, items) {
-        var mainlist = this;
-        mainlist.items = items;
+        var controller = this;
+        controller.items = items;
     }
 
 })();
