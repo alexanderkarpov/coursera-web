@@ -29,7 +29,7 @@
             })
 
             .state('categoriesList.itemDetail', {
-                url: '/item-detail/{itemId}',
+                url: '/item-detail/{categoryShortName}',
                 templateUrl: 'src/menuapp/templates/items.template.html',
                 controller: "ItemDetailController as itemDetail"
             });
