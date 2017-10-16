@@ -1,43 +1,57 @@
 <div class="container" ng-controller="SignUpController as cntrl">
     <fieldset>
         <legend>Tell us about yourself</legend>
-        <div>{{ cntrl.username }}</div>
         <form name='regForm' novalidate>
 
             <input type="text" name="firstName" placeholder="Pick a First Name"
-                   ng-model="cntrl.username"
+                   ng-model="cntrl.firstname"
                    required
-                   minlength="4"
-                   ng-maxlength="10">
-            {{ cntrl.username }}
-            <span
-                    ng-if="(regForm.firstName.$error.minlength || regForm.firstName.$error.required) && regForm.firstName.$touched">
-            First name must be at least 4 characters long
-          </span>
-            <span ng-if="regForm.username.$error.maxlength && regForm.username.$touched">
-            First name must not be longer than 10 characters
-          </span>
+                   minlength="1"
+                   ng-maxlength="15">
+            <!--{{ cntrl.firstname }}-->
+            <span ng-if="(regForm.firstName.$error.minlength || regForm.firstName.$error.required) && regForm.firstName.$touched">
+            First name must be at least 2 characters long</span>
+            <span ng-if="regForm.firstName.$error.maxlength && regForm.firstName.$touched">
+            First name must not be longer than 15 characters</span>
+            <br>
+
+            <input type="text" name="lastName" placeholder="Pick a Last Name"
+                   ng-model="cntrl.lastname"
+                   required
+                   minlength="2"
+                   ng-maxlength="15">
+            <!--{{ cntrl.lastname }}-->
+            <span ng-if="(regForm.lastName.$error.minlength || regForm.lastName.$error.required) && regForm.lastName.$touched">
+            Last name must be at least 2 characters long</span>
+            <span ng-if="regForm.lastName.$error.maxlength && regForm.lastName.$touched">
+            Last name must not be longer than 15 characters</span>
             <br>
 
             <input type="email" name="email" placeholder="Email"
-                   ng-model="reg.user.email"
+                   ng-model="cntrl.email"
                    required>
             <span ng-if="regForm.email.$invalid && regForm.email.$touched">
-            Must be a valid email address: handle@domain format
-          </span>
+            Must be a valid email address: handle@domain format</span>
             <br>
 
             <input type="text" name="phone" placeholder="Phone ###-###-####"
-                   ng-model="reg.user.phone"
+                   ng-model="cntrl.phone"
+                   required
                    pattern="(\d{3})-(\d{3})-(\d{4})">
             <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
-            Phone must be in the format ###-###-####.
-          </span>
+            Phone must be in the format ###-###-####</span>
+            <br>
+
+            <input type="text" name="menuItem" placeholder="Your favourite menu item"
+                   ng-model="cntrl.menuItem"
+                   required>
+            <span ng-if="regForm.menuItem.$invalid && regForm.menuItem.$touched">
+            Please enter the menu item short name</span>
             <br>
 
             <button
                     ng-disabled="regForm.$invalid"
-                    ng-click="reg.submit()">Submit
+                    ng-click="cntrl.submit()">Submit
             </button>
 
             <!--<div style="margin-top: 10px;">-->
