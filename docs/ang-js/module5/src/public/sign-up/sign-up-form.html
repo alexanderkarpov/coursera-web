@@ -1,20 +1,21 @@
-<div class="container">
+<div class="container" ng-controller="SignUpController as cntrl">
     <fieldset>
-        <legend>Registration</legend>
+        <legend>Tell us about yourself</legend>
+        <div>{{ cntrl.username }}</div>
         <form name='regForm' novalidate>
 
-            <input type="text" name="username" placeholder="Pick a username"
-                   ng-model="reg.user.username"
+            <input type="text" name="firstName" placeholder="Pick a First Name"
+                   ng-model="cntrl.username"
                    required
                    minlength="4"
                    ng-maxlength="10">
-            {{ reg.user.username }}
+            {{ cntrl.username }}
             <span
-                    ng-if="(regForm.username.$error.minlength || regForm.username.$error.required) && regForm.username.$touched">
-            Username must be at least 4 characters long
+                    ng-if="(regForm.firstName.$error.minlength || regForm.firstName.$error.required) && regForm.firstName.$touched">
+            First name must be at least 4 characters long
           </span>
             <span ng-if="regForm.username.$error.maxlength && regForm.username.$touched">
-            Username must not be longer than 10 characters
+            First name must not be longer than 10 characters
           </span>
             <br>
 
@@ -39,9 +40,9 @@
                     ng-click="reg.submit()">Submit
             </button>
 
-            <div style="margin-top: 10px;">
-                Form valid? {{ regForm.$valid }}
-            </div>
+            <!--<div style="margin-top: 10px;">-->
+            <!--Form valid? {{ regForm.$valid }}-->
+            <!--</div>-->
         </form>
     </fieldset>
 </div>
