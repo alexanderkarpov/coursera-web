@@ -44,21 +44,20 @@
 
             <input type="text" name="menuItem" placeholder="Your favourite menu item"
                    ng-model="cntrl.menuItem"
-                   required
-                   ng-keyup="cntrl.loadMenuItem()">
+                   ng-keyup="cntrl.loadMenuItem(regForm)">
             <span ng-if="regForm.menuItem.$invalid && regForm.menuItem.$touched">
-            Please enter the menu item short name</span>
-            <span ng-if="!cntrl.menuItemValidated && regForm.menuItem.$touched">
             Menu item {{ cntrl.menuItem }} wasn't found</span>
             <br>
-            <span ng-if="cntrl.menuItemValidated">
-                Menu item chosen: [{{ cntrl.menuItem }}] {{ cntrl.menuItemName }} : {{ cntrl.imagePresent }}
+            <span ng-if="!regForm.menuItem.$invalid && regForm.menuItem.$touched">
+                Menu item chosen: [{{ cntrl.menuItem }}] {{ cntrl.menuItemName }}
             </span>
-
+            <br>
+            <img ng-if="!regForm.menuItem.$invalid && regForm.menuItem.$touched && cntrl.imagePresent"
+                 src="{{ cntrl.menuItemUrl() }}">
             <br>
 
             <button
-                    ng-disabled="regForm.$invalid && !cntrl.menuItemValidated"
+                    ng-disabled="regForm.$invalid"
                     ng-click="cntrl.submit()">Submit
             </button>
 

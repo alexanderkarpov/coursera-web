@@ -10,9 +10,8 @@
     function SignUpController(SignUpService) {
         var controller = this;
 
-        controller.menuItemValidated = false;
-
-        controller.loadMenuItem = function () {
+        controller.loadMenuItem = function (form) {
+            form.menuItem.$setValidity("text", false);
             var shortName = controller.menuItem;
             if (shortName) {
                 console.log("load menu item by short name", shortName);
@@ -21,14 +20,18 @@
                         console.log("data", data);
                         controller.menuItemName  = data.name;
                         controller.imagePresent = data.image_present;
-                        controller.menuItemValidated = true;
+                        form.menuItem.$setValidity("text", true);
                     })
                     .catch(function (error) {
                         console.log("error", error);
-                        controller.menuItemValidated = false;
+                        form.menuItem.$setValidity("text", false);
                     })
 
             }
+        };
+
+        controller.menuItemUrl = function () {
+            return SignUpService.menuItemUrl(controller.menuItem);
         };
 
         controller.submit = function () {
