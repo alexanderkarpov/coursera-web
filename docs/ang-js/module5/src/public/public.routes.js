@@ -52,7 +52,13 @@
             })
             .state('public.userinfo', {
                 url: '/userinfo',
-                templateUrl: 'src/public/user-info/user-info.html'
+                templateUrl: 'src/public/user-info/user-info.html',
+                controller: 'UserController as cntrl',
+                resolve: {
+                    userData: ['SignUpService', function (SignUpService) {
+                        return SignUpService.getUserData();
+                    }]
+                }
             })
 
     }
