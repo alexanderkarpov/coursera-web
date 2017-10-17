@@ -10,6 +10,8 @@
     function SignUpController(SignUpService) {
         var controller = this;
 
+        controller.menuItemValidated = false;
+
         controller.loadMenuItem = function () {
             var shortName = controller.menuItem;
             if (shortName) {
@@ -17,9 +19,13 @@
                 SignUpService.loadMenuItem(shortName)
                     .then(function (data) {
                         console.log("data", data);
+                        controller.menuItemName  = data.name;
+                        controller.imagePresent = data.image_present;
+                        controller.menuItemValidated = true;
                     })
                     .catch(function (error) {
                         console.log("error", error);
+                        controller.menuItemValidated = false;
                     })
 
             }

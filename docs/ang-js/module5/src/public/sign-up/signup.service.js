@@ -15,8 +15,6 @@
                 url: (ApiPath + "/menu_items/" + shortName + ".json")
             }).then(function (response) {
                 return response.data;
-            }).catch(function (error) {
-                console.log("error received", error);
             });
 
         };
