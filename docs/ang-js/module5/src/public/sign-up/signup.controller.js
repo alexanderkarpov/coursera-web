@@ -4,8 +4,14 @@
     angular.module('public')
         .controller('SignUpController', SignUpController);
 
+    // SignUpController.$inject = ['SignUpService'];
+
     function SignUpController() {
         var controller = this;
+
+        controller.loadMenuItem = function () {
+            console.log("load menu item", controller.menuItem)
+        };
 
         controller.submit = function () {
             var signupData = {};

@@ -44,9 +44,14 @@
 
             <input type="text" name="menuItem" placeholder="Your favourite menu item"
                    ng-model="cntrl.menuItem"
-                   required>
+                   required
+                   ng-keyup="cntrl.loadMenuItem()">
             <span ng-if="regForm.menuItem.$invalid && regForm.menuItem.$touched">
             Please enter the menu item short name</span>
+            <br>
+            <span>
+                Menu item chosen: {{ cntrl.menuItem }}
+            </span>
             <br>
 
             <button
