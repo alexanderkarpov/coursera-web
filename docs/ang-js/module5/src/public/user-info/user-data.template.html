@@ -1,2 +1,17 @@
-<h1>User info ***</h1>
-{{ $ctrl.data }}
+<div class="container">
+<div ng-if="$ctrl.data.firstName">
+    <h2>User info</h2>
+    <div>First name: {{ $ctrl.data.firstName }}</div>
+    <div>Last name: {{ $ctrl.data.lastName }}</div>
+    <div>Email: {{ $ctrl.data.email }}</div>
+    <div>Phone: {{ $ctrl.data.phone }}</div>
+    <div>Favourite dish: {{ $ctrl.data.menuItemName }}</div>
+    <div><img src="{{ $ctrl.data.menuItemUrl }}"></div>
+
+</div>
+<div ng-if="!$ctrl.data.firstName">
+    <h2>User info not found</h2>
+    <button ui-sref="public.signup">Please sign up</button>
+</div>
+
+</div>
