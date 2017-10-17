@@ -26,13 +26,18 @@
         };
 
         service.saveUserData = function (data) {
+            console.log("save user data", data);
             service.userData = data;
         };
 
         service.getUserData = function () {
-            var deferred = $q.defer();
-            deferred.resolve(service.userData)
-            return deferred;
+            // var deferred = $q.defer();
+            // deferred.resolve(new Date());
+            // return deferred;
+            console.log("load user data", service.userData);
+            return service.userData;
+
+            // return new Date();
         }
 
     }

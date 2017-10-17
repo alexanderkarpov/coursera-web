@@ -43,6 +43,7 @@
             signupData.menuItem = controller.menuItem;
 
             console.log("signupData", signupData);
+            SignUpService.saveUserData(signupData);
         }
     }
 

@@ -9,8 +9,9 @@
     function UserController(SignUpService, userData) {
 
         var controller = this;
-
         controller.data = userData;
+
+
     }
 
 })();
