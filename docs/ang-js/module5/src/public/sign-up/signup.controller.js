@@ -5,12 +5,24 @@
         .controller('SignUpController', SignUpController);
 
     // SignUpController.$inject = ['SignUpService'];
+    SignUpController.$inject = ['SignUpService'];
 
-    function SignUpController() {
+    function SignUpController(SignUpService) {
         var controller = this;
 
         controller.loadMenuItem = function () {
-            console.log("load menu item", controller.menuItem)
+            var shortName = controller.menuItem;
+            if (shortName) {
+                console.log("load menu item by short name", shortName);
+                SignUpService.loadMenuItem(shortName)
+                    .then(function (data) {
+                        console.log("data", data);
+                    })
+                    .catch(function (error) {
+                        console.log("error", error);
+                    })
+
+            }
         };
 
         controller.submit = function () {

@@ -12,11 +12,11 @@
         service.loadMenuItem = function (shortName) {
             return $http({
                 method: "GET",
-                url: (ApiPath + "/" + shortName + ".json")
+                url: (ApiPath + "/menu_items/" + shortName + ".json")
             }).then(function (response) {
                 return response.data;
             }).catch(function (error) {
-                console.log(error);
+                console.log("error received", error);
             });
 
         };
