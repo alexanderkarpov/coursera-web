@@ -31,13 +31,8 @@
         };
 
         service.getUserData = function () {
-            // var deferred = $q.defer();
-            // deferred.resolve(new Date());
-            // return deferred;
             console.log("load user data", service.userData);
             return service.userData;
-
-            // return new Date();
         }
 
     }
