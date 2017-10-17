@@ -41,6 +41,8 @@
             signupData.email = controller.email;
             signupData.phone = controller.phone;
             signupData.menuItem = controller.menuItem;
+            signupData.menuItemName = controller.menuItemName;
+            signupData.menuItemUrl = controller.menuItemUrl();
 
             console.log("signupData", signupData);
             SignUpService.saveUserData(signupData);
