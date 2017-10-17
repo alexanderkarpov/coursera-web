@@ -57,6 +57,7 @@
             <br>
 
             <button
+                    ui-sref="public.userinfo"
                     ng-disabled="regForm.$invalid"
                     ng-click="cntrl.submit()">Submit
             </button>
@@ -67,3 +68,4 @@
         </form>
     </fieldset>
 </div>
+<ui-view></ui-view>

@@ -46,9 +46,14 @@
                 url: '/signup',
                 templateUrl: 'src/public/sign-up/sign-up-form.html'
             })
+            .state('public.submitted', {
+                url: '/submitted',
+                templateUrl: 'src/public/submitted/submitted.html'
+            })
             .state('public.userinfo', {
                 url: '/userinfo',
                 templateUrl: 'src/public/user-info/user-info.html'
-            });
+            })
+
     }
 })();
