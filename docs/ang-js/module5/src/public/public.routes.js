@@ -46,7 +46,7 @@
                 url: '/signup',
                 templateUrl: 'src/public/sign-up/sign-up-form.html'
             })
-            .state('public.submitted', {
+            .state('public.signup.submitted', {
                 url: '/submitted',
                 templateUrl: 'src/public/submitted/submitted.html'
             })
